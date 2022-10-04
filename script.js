@@ -31,8 +31,34 @@ function getSymbol() {
 
 
 function generatePassword() {
+    const len = lenEl.value;
+
+    password = "";
+    for(let i = 0; i< len; i++) {
+     const x = generateX();
+     
+     password += x;
+    }
 
     pwEl.innerText = password;
+}
+
+function generateX() {
+    const xs = [];
+
+    if(upperEl.checked) {
+        xs.push(getUpperCase());
+    }
+    if(lowerEl.checked) {
+        xs.push(getLowerCase());
+    }
+    if(numberEl.checked) {
+        xs.push(getNumber());
+    }
+    if(symbolEl.checked) {
+        xs.push(getSymbol());
+    }
+    return xs[Math.floor(Math.random() * xs.length)];
 }
 
 generateEl.addEventListener('click', generatePassword);
