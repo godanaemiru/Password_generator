@@ -34,7 +34,22 @@ function generatePassword() {
     const len = lenEl.value;
 
     password = "";
-    for(let i = 0; i< len; i++) {
+
+    if(upperEl.checked) {
+        password += getUpperCase();
+    }
+    if(lowerEl.checked) {
+        password += getLowerCase();
+    }
+    if(numberEl.checked) {
+        password += getNumber();
+    }
+    if(symbolEl.checked) {
+        password += getSymbol();
+    }
+
+
+    for(let i = password.length; i< len; i++) {
      const x = generateX();
      
      password += x;
